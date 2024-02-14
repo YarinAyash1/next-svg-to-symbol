@@ -64,6 +64,7 @@ export function FormSymbolConvertor() {
                         </FormItem>
                     )}
                 />
+
                 <Button type="submit" className={"bg-sky-700 text-white"}>
                     Convert
                     <Icons.convert className="ml-2 h-4 w-4 text-white" />

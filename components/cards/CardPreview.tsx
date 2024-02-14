@@ -8,22 +8,25 @@ interface CardPreviewProps {
     svg: string;
     symbol: string;
     icon: string;
+    itemKey: number;
+    onDelete: (index: number) => void;
 }
 
-export default function CardPreview({time, symbol, svg, icon}: CardPreviewProps) {
+export default function CardPreview({time, symbol, svg, icon, onDelete, itemKey}: CardPreviewProps) {
 
     return (
         <Card className="w-full">
             <CardHeader
-                className={"border-b bg-gray-200 flex flex-row px-4 py-2 items-center justify-between"}>
+                className={"border-b bg-gray-200 dark:bg-gray-600 flex flex-row px-4 py-2 items-center justify-between"}>
                 <CardTitle className={"text-sm"}>{getItemDate(time)}</CardTitle>
-                <Button variant={'destructive'} className={"text-xs h-7"} size={'sm'}>Delete</Button>
+                <Button onClick={() => onDelete(itemKey)} variant={'destructive'} className={"text-xs h-7"}
+                        size={'sm'}>Delete</Button>
             </CardHeader>
-            <CardContent className="py-8">
+            <CardContent className="py-8 dark:bg-gray-600">
                 <div className="flex justify-around">
                     <div className="input">
                         <span className="font-bold mb-2 block text-xl">SVG (Your Input)</span>
-                        <div className="icon bg-gray-300 w-[100px] h-[100px] p-3 m-auto"
+                        <div className="icon bg-gray-300  w-[100px] h-[100px] p-3 m-auto"
                              dangerouslySetInnerHTML={{__html: svg}}></div>
                     </div>
                     <div className="output">

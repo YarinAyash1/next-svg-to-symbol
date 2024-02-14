@@ -10,7 +10,6 @@ export default function Home() {
             <div className={'w-[66%]'}>
                 <SvgsResults/>
             </div>
-
         </div>
     )
 }

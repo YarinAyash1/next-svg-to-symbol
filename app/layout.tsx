@@ -7,6 +7,7 @@ import {cn} from "@/lib/utils"
 import {SiteHeader} from "@/components/site-header"
 import {TailwindIndicator} from "@/components/tailwind-indicator"
 import {ThemeProvider} from "@/components/theme-provider"
+import {SvgConvertorProvider} from "@/context/SvgConvertorContext";
 
 export const runtime = "edge";
 
@@ -43,10 +44,12 @@ export default function RootLayout({children}: RootLayoutProps) {
                 )}
             >
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-                <div className="relative flex min-h-screen flex-col">
-                    <SiteHeader/>
-                    {children}
-                </div>
+                <SvgConvertorProvider>
+                    <div className="relative flex min-h-screen flex-col">
+                        <SiteHeader/>
+                        {children}
+                    </div>
+                </SvgConvertorProvider>
                 <TailwindIndicator/>
             </ThemeProvider>
             </body>
