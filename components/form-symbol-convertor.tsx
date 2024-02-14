@@ -15,12 +15,14 @@ import * as React from "react";
 export function FormSymbolConvertor() {
 
     const formSchema = z.object({
+        SVGId: z.string(),
         SVGTextArea: z.string().min(1, 'Please add your svg'),
     })
     // 1. Define your form.
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
+            SVGId: "",
             SVGTextArea: "",
         },
     })
@@ -56,7 +58,7 @@ export function FormSymbolConvertor() {
                     render={({ field }) => (
                         <FormItem>
                             <Label htmlFor="SVGTextArea">Convert SVG</Label>
-                            <Textarea rows="12" placeholder={'<svg>\n' + '  <!-- here the svg to convert... -->\n' + '</svg>'}
+                            <Textarea rows={12} placeholder={'<svg>\n' + '  <!-- here the svg to convert... -->\n' + '</svg>'}
                                       id="SVGTextArea"/>
                             <FormMessage />
                         </FormItem>

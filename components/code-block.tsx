@@ -4,8 +4,11 @@ import {CheckIcon, CopyIcon} from "lucide-react";
 import {Toggle} from "@/components/ui/toggle";
 import React, {useState} from "react";
 import {useCopyToClipboard} from "@/hooks/useCopyToClipboard";
-
-export default function BlockCode({code, lang}) {
+interface BlockCodeProps {
+    code: string;
+    lang: string;
+}
+export default function BlockCode({code, lang}: BlockCodeProps) {
     const [copiedText, copyToClipboard] = useCopyToClipboard();
     const [isPressed, setPressed] = useState(false);
     let timeoutRef: NodeJS.Timeout | null = null;
@@ -29,11 +32,10 @@ export default function BlockCode({code, lang}) {
                 {isPressed ? (<CheckIcon className="w-5 h-5"/>) : (<CopyIcon className="w-5 h-5" />)}
             </Toggle>
             <CodeBlock
-                className={'p-0'}
                 text={code}
                 language={lang}
                 showLineNumbers={false}
-                wrapLines
+                wrapLongLines={true}
                 theme={github}
             />
         </div>

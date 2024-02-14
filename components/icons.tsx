@@ -7,7 +7,7 @@ import {
 export const Icons = {
     sun: SunMedium,
     moon: Moon,
-    convert: (props) => (
+    convert: (props : LucideProps) => (
         <svg
             fill="none"
             stroke="currentColor"
