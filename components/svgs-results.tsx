@@ -34,8 +34,8 @@ export function SvgsResults() {
     return (
         <div className="grid gap-10">
             {
-                items.map(item => (
-                    <Tabs defaultValue="preview">
+                items.map((item, k) => (
+                    <Tabs key={k} defaultValue="preview">
                         <TabsList>
                             <TabsTrigger value="preview">Preview</TabsTrigger>
                             <TabsTrigger value="code">Code</TabsTrigger>
