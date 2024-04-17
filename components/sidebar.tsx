@@ -1,6 +1,4 @@
-import {Textarea} from "@/components/ui/textarea"
 import {Label} from "@/components/ui/label";
-import {Input} from "@/components/ui/input";
 import {FormSymbolConvertor} from "@/components/form-symbol-convertor";
 import {Switch} from "@/components/ui/switch";
 
@@ -17,10 +15,6 @@ export function Sidebar() {
                 href="https://css-tricks.com/svg-symbol-good-choice-icons/" rel="noopener">this article from
                 CSS-Tricks</a>.</p>
             <hr className={"my-4 opacity-80"} />
-            <div className="flex items-center space-x-2 mb-4">
-                <Switch id="upload-mode" />
-                <Label htmlFor="upload-mode">Switch to upload files</Label>
-            </div>
             <FormSymbolConvertor/>
         </div>
     )

@@ -26,13 +26,19 @@ export function SvgConvertorProvider({children}: SvgConvertorProviderProps) {
 
     useEffect(() => {
         const storedResults = localStorage.getItem('svg-to-symbol-converter');
-
+        console.log(storedResults)
         if (storedResults)
             return setResults(JSON.parse(storedResults));
 
         localStorage.setItem('svg-to-symbol-converter', JSON.stringify(items));
         setResults(items);
     }, []);
+
+
+    useEffect(() => {
+        if (!results.length) return;
+        localStorage.setItem('svg-to-symbol-converter', JSON.stringify(results));
+    }, [results])
 
     function deleteItemFromStorage(index: number) {
         const newResults = [...results];

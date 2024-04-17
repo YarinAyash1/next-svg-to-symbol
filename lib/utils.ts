@@ -19,3 +19,32 @@ export const getItemDate = (date: string): string => {
 
   return `${dateString} ${timeString}`;
 }
+
+export const getUuid = (): string => {
+  return 'svg-xxxxxxxx'.replace(/[xy]/g, function (c) {
+    let r = Math.random() * 16 | 0;
+    let v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
+export const buildHtml = (rawSymbolCode: string, uuid: string) => {
+  let symbol = rawSymbolCode
+      .replace(/<title>.*<\/title>\s/, '');
+
+  const icon = `
+    <svg class="${uuid}">
+        <use xlink:href="#${uuid}" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+    </svg>`;
+
+
+  let symbolCode = symbol.split('\n');
+  symbolCode.shift();
+  symbolCode.pop();
+
+  return {
+    symbol,
+    icon,
+    symbolExample: symbolCode.join('\n')
+  };
+}
